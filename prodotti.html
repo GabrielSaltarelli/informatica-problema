@@ -243,55 +243,60 @@
     </div>
 
     <!-- Script per gestire il carrello e le funzioni di incremento/decremento -->
-    <script>
-        // Recupera dal localStorage eventuali prodotti già aggiunti
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+   <script>
+    // Recupera dal localStorage eventuali prodotti già aggiunti
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-        // Aggiorna il badge del carrello in alto a destra
-        function updateCartBadge() {
-            let count = cart.length;
-            const badge = document.getElementById('cartCount');
-            badge.innerText = count;
-            badge.style.display = count > 0 ? 'block' : 'none';
+    // Aggiorna il badge del carrello in alto a destra
+    function updateCartBadge() {
+        let count = cart.length;
+        const badge = document.getElementById('cartCount');
+        badge.innerText = count;
+        badge.style.display = count > 0 ? 'block' : 'none';
+    }
+
+    // Funzione per aggiungere un prodotto al carrello
+    function addToCart(productName, quantityInputId, priceId) {
+        const quantity = parseFloat(document.getElementById(quantityInputId).value);
+        if (quantity > 0) {
+            // Recupera il prezzo visualizzato (già calcolato in base al numero di incrementi da 0.5)
+            const price = parseFloat(document.getElementById(priceId).innerText);
+            // Aggiungi l'oggetto prodotto al carrello
+            cart.push({ product: productName, quantity: quantity, price: price });
+            // Salva il carrello nel localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+            // Aggiorna il badge
+            updateCartBadge();
+        } else {
+            alert("Seleziona almeno 0,5 prodotto.");
         }
+    }
 
-        // Funzione per aggiungere un prodotto al carrello
-        function addToCart(productName, quantityInputId, priceId) {
-            const quantity = parseInt(document.getElementById(quantityInputId).value);
-            if (quantity > 0) {
-                // Recupera il prezzo visualizzato (già moltiplicato per la quantità)
-                const price = parseFloat(document.getElementById(priceId).innerText);
-                // Aggiungi l'oggetto prodotto al carrello
-                cart.push({ product: productName, quantity: quantity, price: price });
-                // Salva il carrello nel localStorage
-                localStorage.setItem('cart', JSON.stringify(cart));
-                // Aggiorna il badge
-                updateCartBadge();
-            } else {
-                alert("Seleziona almeno 1 prodotto.");
-            }
+    // Funzione per incrementare la quantità di 0.5 e aggiornare il prezzo
+    function increase(inputId, priceId, unitPrice) {
+        let quantity = parseFloat(document.getElementById(inputId).value);
+        quantity += 0.5;
+        document.getElementById(inputId).value = quantity.toFixed(1);
+        // Calcola il prezzo in base a quanti "mezzi kg" sono stati aggiunti
+        document.getElementById(priceId).innerText = ((quantity / 0.5) * unitPrice).toFixed(2);
+    }
+
+    // Funzione per decrementare la quantità di 0.5 e aggiornare il prezzo
+    function decrease(inputId, priceId, unitPrice) {
+        let quantity = parseFloat(document.getElementById(inputId).value);
+        if (quantity > 0) {
+            quantity -= 0.5;
+            // Evita quantità negative
+            if(quantity < 0) quantity = 0;
+            document.getElementById(inputId).value = quantity.toFixed(1);
+            document.getElementById(priceId).innerText = ((quantity / 0.5) * unitPrice).toFixed(2);
         }
+    }
 
-        // Funzioni per incrementare e decrementare la quantità
-        function increase(inputId, priceId, unitPrice) {
-            let quantity = parseInt(document.getElementById(inputId).value);
-            quantity++;
-            document.getElementById(inputId).value = quantity;
-            document.getElementById(priceId).innerText = (quantity * unitPrice).toFixed(2);
-        }
+    // Al caricamento della pagina, aggiorna il badge del carrello
+    document.addEventListener("DOMContentLoaded", updateCartBadge);
+</script>
 
-        function decrease(inputId, priceId, unitPrice) {
-            let quantity = parseInt(document.getElementById(inputId).value);
-            if (quantity > 0) {
-                quantity--;
-                document.getElementById(inputId).value = quantity;
-                document.getElementById(priceId).innerText = (quantity * unitPrice).toFixed(2);
-            }
-        }
-
-        // Al caricamento della pagina, aggiorna il badge del carrello
-        document.addEventListener("DOMContentLoaded", updateCartBadge);
-    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
