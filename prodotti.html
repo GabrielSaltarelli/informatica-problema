@@ -49,7 +49,7 @@
                             </button>
                         </div>
                         <div class="d-grid gap-2">
-                            <button class="btn btn-primary">Aggiungi al carrello</button>
+                            <button class="btn btn-primary" onclick="Calcoloprezzo1(event)">Aggiungi al carrello</button>
                         </div>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
                             </button>
                         </div>
                         <div class="d-grid gap-2">
-                            <button class="btn btn-primary">Aggiungi al carrello</button>
+                            <button class="btn btn-primary" onclick="Calcoloprezzo2(event)">Aggiungi al carrello</button>
                         </div>
                     </div>
                 </div>
@@ -91,7 +91,7 @@
                             </button>
                         </div>
                         <div class="d-grid gap-2">
-                            <button class="btn btn-primary">Aggiungi al carrello</button>
+                            <button class="btn btn-primary" onclick="Calcoloprezzo3(event)">Aggiungi al carrello</button>
                         </div>
                     </div>
                 </div>
@@ -111,6 +111,18 @@
         quantityInput.value = parseFloat(quantityInput.value) - 0.5;
       }
   }
+    var Prezzotaralli = 3;
+    var Prezzofocaccia = 6;
+    var Prezzoorecchiette = 10;
+    var Prodotto = document.getElementById(Prezzototale);
+    var Prezzototale = 0;
+    
+    function Calcoloprezzo1(event) {
+        var PTaralli = document.getElementById(Prezzotaralli).value;
+        var quantita = document.getElementById(quantityInput1).value;
+        if(quantityInput1 > 0){
+            var Prodotto = PTaralli * quantità
+            Prezzototale.textcontext = Prodotto;
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
