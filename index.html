@@ -57,7 +57,18 @@
                     <div class="card-body">
                         <h5 class="card-title">Focaccia rossa</h5>
                         <p class="card-text">Ruota di focaccia al kg.</p>
-                        <button class="btn btn-primary">Aggiungi al carrello</button>
+                             <div class="input-group mb-3">
+                            <button class="btn btn-outline-secondary" type="button" id="decreaseBtn1" onclick="decrease('quantityInput2')">
+                              <i class="fas fa-minus"></i>
+                            </button>
+                            <input type="text" class="form-control text-center" value="0" id="quantityInput1">
+                            <button class="btn btn-outline-secondary" type="button" id="increaseBtn1" onclick="increase('quantityInput2')">
+                              <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary">Aggiungi al carrello</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -66,8 +77,19 @@
                     <img src="IMG_0702.jpeg" class="card-img-top" alt="Orecchiette">
                     <div class="card-body">
                         <h5 class="card-title">Orecchiette fresche</h5>
-                        <p class="card-text">Orecchiette fresche inbustate al pacco.</p>
+                        <p class="card-text">Orecchiette fresche inbustate al kg.</p>
+                          <div class="input-group mb-3">
+                            <button class="btn btn-outline-secondary" type="button" id="decreaseBtn1" onclick="decrease('quantityInput2')">
+                              <i class="fas fa-minus"></i>
+                            </button>
+                            <input type="text" class="form-control text-center" value="0" id="quantityInput1">
+                            <button class="btn btn-outline-secondary" type="button" id="increaseBtn1" onclick="increase('quantityInput2')">
+                              <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <div class="d-grid gap-2">
                         <button class="btn btn-primary">Aggiungi al carrello</button>
+                        </div>
                     </div>
                 </div>
             </div>
