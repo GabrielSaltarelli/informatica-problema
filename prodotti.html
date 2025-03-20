@@ -37,16 +37,60 @@
                     <div class="card-body">
                         <h5 class="card-title">Tarallini</h5>
                         <p class="card-text">Tarallini pugliesi freschi di ogni tipo al kg.</p>
-                        <p class="card-text">Prezzo: <span id="prezzoTarallini">0.00</span> €</p>
                         <div class="input-group mb-3">
-                            <button class="btn btn-outline-secondary" type="button" onclick="decrease('quantityInput1', 'prezzoTarallini')">
+                            <button class="btn btn-outline-secondary" type="button" onclick="decrease('quantityInput1', 'prezzoTarallini', 5)">
                               <i class="fas fa-minus"></i>
                             </button>
                             <input type="text" class="form-control text-center" value="0" id="quantityInput1" readonly>
-                            <button class="btn btn-outline-secondary" type="button" onclick="increase('quantityInput1', 'prezzoTarallini')">
+                            <button class="btn btn-outline-secondary" type="button" onclick="increase('quantityInput1', 'prezzoTarallini', 5)">
                               <i class="fas fa-plus"></i>
                             </button>
                         </div>
+                        <p class="card-text">Prezzo: <span id="prezzoTarallini">0.00</span> €</p>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary">Aggiungi al carrello</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="IMG_0699.jpeg" class="card-img-top" alt="Focaccia">
+                    <div class="card-body">
+                        <h5 class="card-title">Focaccia rossa</h5>
+                        <p class="card-text">Ruota di focaccia al kg.</p>
+                        <div class="input-group mb-3">
+                            <button class="btn btn-outline-secondary" type="button" onclick="decrease('quantityInput2', 'prezzoFocaccia', 7)">
+                              <i class="fas fa-minus"></i>
+                            </button>
+                            <input type="text" class="form-control text-center" value="0" id="quantityInput2" readonly>
+                            <button class="btn btn-outline-secondary" type="button" onclick="increase('quantityInput2', 'prezzoFocaccia', 7)">
+                              <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <p class="card-text">Prezzo: <span id="prezzoFocaccia">0.00</span> €</p>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary">Aggiungi al carrello</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="IMG_0702.jpeg" class="card-img-top" alt="Orecchiette">
+                    <div class="card-body">
+                        <h5 class="card-title">Orecchiette fresche</h5>
+                        <p class="card-text">Orecchiette fresche inbustate al kg.</p>
+                        <div class="input-group mb-3">
+                            <button class="btn btn-outline-secondary" type="button" onclick="decrease('quantityInput3', 'prezzoOrecchiette', 10)">
+                              <i class="fas fa-minus"></i>
+                            </button>
+                            <input type="text" class="form-control text-center" value="0" id="quantityInput3" readonly>
+                            <button class="btn btn-outline-secondary" type="button" onclick="increase('quantityInput3', 'prezzoOrecchiette', 10)">
+                              <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <p class="card-text">Prezzo: <span id="prezzoOrecchiette">0.00</span> €</p>
                         <div class="d-grid gap-2">
                             <button class="btn btn-primary">Aggiungi al carrello</button>
                         </div>
@@ -57,28 +101,25 @@
     </div>
 
 <script>
-  const prezzoMezzoKg = 2.30;
-  
-  function increase(inputId, priceId) {
+  function increase(inputId, priceId, pricePerHalfKg) {
       let quantityInput = document.getElementById(inputId);
       let priceElement = document.getElementById(priceId);
       let quantity = parseFloat(quantityInput.value) + 0.5;
       quantityInput.value = quantity;
-      priceElement.textContent = (quantity * (prezzoMezzoKg / 0.5)).toFixed(2);
+      priceElement.textContent = (quantity * (pricePerHalfKg / 0.5)).toFixed(2);
   }
   
-  function decrease(inputId, priceId) {
+  function decrease(inputId, priceId, pricePerHalfKg) {
       let quantityInput = document.getElementById(inputId);
       let priceElement = document.getElementById(priceId);
       let quantity = parseFloat(quantityInput.value);
       if (quantity > 0) {
           quantity -= 0.5;
           quantityInput.value = quantity;
-          priceElement.textContent = (quantity * (prezzoMezzoKg / 0.5)).toFixed(2);
+          priceElement.textContent = (quantity * (pricePerHalfKg / 0.5)).toFixed(2);
       }
   }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
