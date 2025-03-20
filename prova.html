@@ -37,12 +37,12 @@
 
 <!-- Script JavaScript per la gestione del bottone -->
 <script>
-  function increaseBtn(inputGenerico){
+  function increase(inputGenerico){
       let quantityInput = document.getElementById(inputGenerico);
       quantityInput.value = parseInt(quantityInput.value) + 1;
   }
   
-  function decreaseBtn(inputGenerico){
+  function decrease(inputGenerico){
       let quantityInput = document.getElementById(inputGenerico);
       if (parseInt(quantityInput.value) > 0) {
         quantityInput.value = parseInt(quantityInput.value) - 1;
