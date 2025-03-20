@@ -13,11 +13,23 @@
 
 <div class="container mt-5">
   <div class="input-group">
-    <button class="btn btn-outline-secondary" type="button" id="decreaseBtn">
+    <button class="btn btn-outline-secondary" type="button" id="decreaseBtn1" onclick="decrease('quantityInput1')">
       <i class="fas fa-minus"></i>
     </button>
-    <input type="text" class="form-control text-center" value="0" id="quantityInput">
-    <button class="btn btn-outline-secondary" type="button" id="increaseBtn">
+    <input type="text" class="form-control text-center" value="0" id="quantityInput1">
+    <button class="btn btn-outline-secondary" type="button" id="increaseBtn1" onclick="increase('quantityInput1')">
+      <i class="fas fa-plus"></i>
+    </button>
+  </div>
+</div>
+
+  <div class="container mt-5">
+  <div class="input-group">
+    <button class="btn btn-outline-secondary" type="button" id="decreaseBtn2" onclick="decrease('quantityInput2')">
+      <i class="fas fa-minus"></i>
+    </button>
+    <input type="text" class="form-control text-center" value="0" id="quantityInput2">
+    <button class="btn btn-outline-secondary" type="button" id="increaseBtn2" onclick="increase('quantityInput2')">
       <i class="fas fa-plus"></i>
     </button>
   </div>
@@ -25,8 +37,19 @@
 
 <!-- Script JavaScript per la gestione del bottone -->
 <script>
+  function increaseBtn(inputGenerico){
+      let quantityInput = document.getElementById(inputGenerico);
+      quantityInput.value = parseInt(quantityInput.value) + 1;
+  }
+  
+  function decreaseBtn(inputGenerico){
+      let quantityInput = document.getElementById(inputGenerico);
+      if (parseInt(quantityInput.value) > 0) {
+        quantityInput.value = parseInt(quantityInput.value) - 1;
+      }
+  }
   // Aumenta la quantità
-  document.getElementById('increaseBtn').addEventListener('click', function() {
+  /*document.getElementById('increaseBtn').addEventListener('click', function() {
     let quantityInput = document.getElementById('quantityInput');
     quantityInput.value = parseInt(quantityInput.value) + 1;
   });
@@ -37,7 +60,7 @@
     if (parseInt(quantityInput.value) > 0) {
       quantityInput.value = parseInt(quantityInput.value) - 1;
     }
-  });
+  });*/
 </script>
 
 <!-- Link al JS di Bootstrap -->
