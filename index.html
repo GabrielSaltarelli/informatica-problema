@@ -36,7 +36,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Tarallini</h5>
                         <p class="card-text">Tarallini pugliesi freschi di ogni tipo al kg.</p>
-                        <div class="input-group">
+                        <div class="input-group mb-5">
                             <button class="btn btn-outline-secondary" type="button" id="decreaseBtn1" onclick="decrease('quantityInput1')">
                               <i class="fas fa-minus"></i>
                             </button>
@@ -45,7 +45,9 @@
                               <i class="fas fa-plus"></i>
                             </button>
                         </div>
-                        <button class="btn btn-primary">Aggiungi al carrello</button>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary">Aggiungi al carrello</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -75,13 +77,13 @@
 <script>
   function increase(inputGenerico){
       let quantityInput = document.getElementById(inputGenerico);
-      quantityInput.value = parseInt(quantityInput.value) + 0.5;
+      quantityInput.value = parseFloat(quantityInput.value) + 0.5;
   }
   
   function decrease(inputGenerico){
       let quantityInput = document.getElementById(inputGenerico);
-      if (parseInt(quantityInput.value) > 0) {
-        quantityInput.value = parseInt(quantityInput.value) - 0.5;
+      if (parseFloat(quantityInput.value) > 0) {
+        quantityInput.value = parseFloat(quantityInput.value) - 0.5;
       }
   }
     </script>
